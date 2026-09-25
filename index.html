@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11130f">
+  <title>Chronicle — Party Statistics</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Chronicle home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span><strong>CHRONICLE</strong><small>FOR THE KING II · PARTY LEDGER</small></span>
+      </a>
+      <div class="session-status"><span class="pulse"></span><span><small>SESSION</small><strong id="session-time">01:42:18</strong></span></div>
+      <nav class="actions" aria-label="Dashboard actions">
+        <button class="icon-button" id="privacy-button" title="Toggle privacy mode" aria-label="Toggle privacy mode">◉</button>
+        <button class="icon-button" id="export-button" title="Export session" aria-label="Export session">⇩</button>
+        <button class="overlay-button" id="overlay-button"><span>▣</span> Overlay mode</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">RUN IN PROGRESS <span></span> THE RESISTANCE</p>
+        <h1>Party performance</h1>
+        <p class="subtitle">A live record of your party's fortunes.</p>
+      </div>
+      <button class="record-button" id="record-button"><span>＋</span> Record event</button>
+    </section>
+
+    <section class="party-grid" id="party-grid" aria-label="Party member statistics"></section>
+
+    <section class="lower-grid">
+      <article class="panel performance-panel">
+        <header class="panel-header">
+          <div><p class="eyebrow">SESSION OVERVIEW</p><h2>Party performance</h2></div>
+          <div class="legend"><span><i class="success-dot"></i>Success</span><span><i class="failure-dot"></i>Failure</span></div>
+        </header>
+        <div class="chart" id="chart" aria-label="Success and failure totals by party member"></div>
+      </article>
+
+      <article class="panel recent-panel">
+        <header class="panel-header">
+          <div><p class="eyebrow">CHRONICLE</p><h2>Recent events</h2></div>
+          <button class="text-button" id="clear-button">Clear session</button>
+        </header>
+        <ol class="event-list" id="event-list"></ol>
+        <div class="local-note"><span>⌂</span><p><strong>Stored on this device</strong><br>Your data never leaves this browser.</p></div>
+      </article>
+    </section>
+
+    <footer><span><i class="safe-dot"></i> SAFE OVERLAY</span><p>No game files, memory, or network traffic accessed.</p><button id="safety-button">Safety &amp; fair play</button></footer>
+  </main>
+
+  <dialog id="event-dialog">
+    <form method="dialog" id="event-form">
+      <div class="modal-heading"><div><p class="eyebrow">ADD TO CHRONICLE</p><h2>Record an event</h2></div><button value="cancel" class="close-button" aria-label="Close">×</button></div>
+      <label>Party member<select id="member-input" required></select></label>
+      <div class="field-row">
+        <label>Event type<select id="type-input"><option value="roll">Dice roll</option><option value="attack">Attack</option><option value="action">Action</option></select></label>
+        <label>Outcome<select id="outcome-input"><option value="success">Success</option><option value="failure">Failure</option></select></label>
+      </div>
+      <label id="damage-label">Damage dealt<input id="damage-input" type="number" min="0" max="999" value="0"></label>
+      <menu><button value="cancel" class="cancel-button">Cancel</button><button type="submit" value="default" class="save-button">Record event</button></menu>
+    </form>
+  </dialog>
+
+  <dialog id="safety-dialog">
+    <form method="dialog"><div class="modal-heading"><div><p class="eyebrow">DESIGNED FOR FAIR PLAY</p><h2>Safety &amp; compliance</h2></div><button class="close-button" value="close">×</button></div><p>Chronicle only uses information you enter manually. It does not inspect memory, inject into the game, automate play, reveal hidden information, or connect to game services.</p><ul><li>Local browser storage only</li><li>No account or Steam credentials</li><li>No gameplay recommendations</li><li>No third-party tracking</li></ul><p class="fine-print">This is an unofficial fan-made tool. Rules and agreements can change—review the current publisher, platform, server, and tournament terms before use.</p><button class="save-button wide" value="close">Understood</button></form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
